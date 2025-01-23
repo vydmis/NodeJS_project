@@ -4,19 +4,23 @@
         <link rel="stylesheet" href="/css/style.css" />
     </head>
     <body>
-        <table border="1">
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Price</th>
-            </tr>
-            <% for (let i = 0; i < products.length; i++) { %>
-            <tr>
-                <td><%= products[i].id %></td>
-                <td><%= products[i].name %></td>
-                <td><%= products[i].price %></td>
-            </tr>
-            <% } %>
-        </table>
+        <header>Labai geras headeris</header>
+        <section class="table-section">
+            <table border="1">
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                </tr>
+                <% for (let i = 0; i < products.length; i++) { %>
+                <tr>
+                    <td><%= products[i].id %></td>
+                    <td><%= products[i].name %></td>
+                    <td><%= products[i].price %></td>
+                </tr>
+                <% } %>
+            </table>
+        </section>
+        <footer>Labai geras footeris &copy; 2025</footer>
     </body>
 </html>
