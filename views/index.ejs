@@ -4,14 +4,16 @@
         <link rel="stylesheet" href="/css/style.css" />
     </head>
     <body>
-        <table border="1">
-            <% for (let i = 0; i < products.length; i++) { %>
-            <tr>
-                <td><%= products[i].id %></td>
-                <td><%= products[i].name %></td>
-                <td><%= products[i].price %></td>
-            </tr>
-            <% } %>
-        </table>
+        <section class="table-section">
+            <table border="1">
+                <% for (let i = 0; i < products.length; i++) { %>
+                <tr>
+                    <td><%= products[i].id %></td>
+                    <td><%= products[i].name %></td>
+                    <td><%= products[i].price %></td>
+                </tr>
+                <% } %>
+            </table>
+        </section>
     </body>
 </html>
