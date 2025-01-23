@@ -7,6 +7,11 @@
         <header>Labai geras headeris</header>
         <section class="table-section">
             <table border="1">
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                </tr>
                 <% for (let i = 0; i < products.length; i++) { %>
                 <tr>
                     <td><%= products[i].id %></td>
