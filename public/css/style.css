@@ -1,0 +1,27 @@
+body {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+table {
+    margin-top: 3rem;
+    font-size: 1.25rem;
+    font-family: system-ui, sans-serif;
+    width: 100%;
+    border-width: 2px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table tr td {
+    height: 30px;
+}
+
+table tr :nth-child(1),
+table tr :nth-child(3) {
+    text-align: center;
+}
+
+table tr :nth-child(2) {
+    padding: 0.25rem 0.5rem;
+}
