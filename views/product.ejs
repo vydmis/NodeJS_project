@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <title>Produkto valdymas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Produkto valdymas</h2>
+        <form id="productForm">
+            <div class="form-group">
+                <label for="productId">Produkto ID (tik atnaujinimui):</label>
+                <input type="text" id="productId" name="productId" value="<%= product ? product.id : '' %>">
+            </div>
+            <div class="form-group">
+                <label for="productName">Produkto pavadinimas:</label>
+                <input type="text" id="productName" name="productName" required value="<%= product ? product.name : '' %>">
+            </div>
+            <div class="form-group">
+                <label for="productPrice">Produkto kaina:</label>
+                <input type="number" id="productPrice" name="productPrice" required value="<%= product ? product.price : '' %>">
+            </div>
+            <div class="form-group">
+                <button type="button" onclick="createOrUpdateProduct()">Išsaugoti</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        async function createOrUpdateProduct() {
+            const productId = document.getElementById('productId').value;
+            const productName = document.getElementById('productName').value;
+            const productPrice = document.getElementById('productPrice').value;
+            
+            const productData = {
+                name: productName,
+                price: productPrice
+            };
+
+            let url = '/api/products';
+            let method = 'POST';
+
+            if (productId) {
+                url += `/${productId}`;
+                method = 'PUT';
+            }
+
+            try {
+                const response = await fetch(url, {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(productData)
+                });
+                
+                if (response.ok) {
+                    alert('Produktas sėkmingai išsaugotas');
+                } else {
+                    alert('Įvyko klaida');
+                }
+            } catch (error) {
+                alert('Įvyko klaida: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html>
